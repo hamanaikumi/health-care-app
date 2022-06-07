@@ -52,12 +52,12 @@ export const useAuth = () => {
         .then((res: any) => {
           if (res) {
             // データが返ってきた時
+            getAllData();
             showMessage({ title: "ユーザー登録しました", status: "success" });
             history.push("/home");
           }
         })
         .catch((error: any) => {
-          console.log(error.message);
           showMessage({ title: "ユーザー登録に失敗しました", status: "error" });
           setLoading(false);
         });
