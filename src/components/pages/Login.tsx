@@ -12,18 +12,15 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ChangeEvent, memo, useCallback, useState } from "react";
-
-import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { useAuth } from "../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
-import { useFirestore } from "../../hooks/useFirestore";
 
 export const Login = memo(() => {
   const history = useHistory();
   const { login, loading } = useAuth();
-  const { getAllData, getInitialData } = useFirestore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -54,8 +51,6 @@ export const Login = memo(() => {
    * ログイン画面に遷移する.
    */
   const onClickLogin = () => {
-    getInitialData();
-    getAllData();
     login(email, password);
   };
 

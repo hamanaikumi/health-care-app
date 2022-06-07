@@ -10,7 +10,7 @@ import { useMessage } from "./useMessage";
 export const useAuth = () => {
   const history = useHistory();
   const { showMessage } = useMessage();
-  const { getAllData } = useFirestore();
+  const { getAllData, getInitialData } = useFirestore();
   const resetYearData = useResetRecoilState(yearDataState);
   const resetTodayData = useResetRecoilState(todayDataState);
   const [loading, setLoading] = useState(false);
@@ -27,12 +27,13 @@ export const useAuth = () => {
         .then((res: any) => {
           if (res) {
             // データが返ってきた時
+            getInitialData();
             getAllData();
             showMessage({ title: "ログインしました", status: "success" });
             history.push("/home");
           }
         })
-        .catch((error: any) => {
+        .catch((error) => {
           showMessage({ title: "ユーザーが見つかりません", status: "error" });
           setLoading(false);
         });
@@ -52,12 +53,12 @@ export const useAuth = () => {
         .then((res: any) => {
           if (res) {
             // データが返ってきた時
-            getAllData();
+
             showMessage({ title: "ユーザー登録しました", status: "success" });
             history.push("/home");
           }
         })
-        .catch((error: any) => {
+        .catch((error) => {
           showMessage({ title: "ユーザー登録に失敗しました", status: "error" });
           setLoading(false);
         });

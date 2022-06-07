@@ -28,9 +28,12 @@ export const useStatisticsData = () => {
       );
 
       // 配列の合計を算出
-      const sum = filterArray.reduce(
-        (previousValue, currentValue) => previousValue + currentValue
-      );
+      let sum = 0;
+      if (filterArray.length > 0) {
+        sum = filterArray.reduce(
+          (previousValue, currentValue) => previousValue + currentValue
+        );
+      }
       // データ件数
       setDataCount(filterArray.length);
       // データ平均
