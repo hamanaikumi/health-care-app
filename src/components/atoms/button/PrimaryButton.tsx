@@ -1,0 +1,34 @@
+import { memo, ReactNode, VFC } from "react";
+import { Button } from "@chakra-ui/react";
+
+type Props = {
+  children: ReactNode;
+  onClick: () => void;
+  // propsがない場合はデフォルトはfalse
+  disabled?: boolean;
+  loading?: boolean;
+  fontSize?: string;
+};
+
+export const PrimaryButton: VFC<Props> = memo((props) => {
+  const {
+    children,
+    onClick,
+    disabled = false,
+    loading = false,
+    fontSize = "sm",
+  } = props;
+  return (
+    <Button
+      bg="teal.400"
+      color="white"
+      _hover={{ opacity: 0.8 }}
+      onClick={onClick}
+      isLoading={loading}
+      disabled={disabled || loading}
+      fontSize={fontSize}
+    >
+      {children}
+    </Button>
+  );
+});
