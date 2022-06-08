@@ -75,7 +75,7 @@ export const filterDataSelector = selector<Data[]>({
         temperature: 0,
         weight: 0,
         steps: 0,
-        timeStampDate: new Date().getTime(),
+        timeStampDate: new Date().getTime() / 1000,
       },
     ];
     // searchValueによって取得期間を切り替え
