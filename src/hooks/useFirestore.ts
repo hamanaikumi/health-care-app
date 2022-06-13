@@ -177,7 +177,7 @@ export const useFirestore = () => {
           ref
             .set({
               temperature: inputValue,
-              updatedAt: new Date(),
+              updatedAt: sendDate(new Date()),
             })
             .then(() => {
               getInitialData();
@@ -192,7 +192,7 @@ export const useFirestore = () => {
           ref
             .set({
               weight: inputValue,
-              updatedAt: new Date(),
+              updatedAt: sendDate(new Date()),
             })
             .then(() => {
               getInitialData();
@@ -208,7 +208,7 @@ export const useFirestore = () => {
           ref
             .set({
               steps: inputValue,
-              updatedAt: new Date(),
+              updatedAt: sendDate(new Date()),
             })
             .then(() => {
               getInitialData();
